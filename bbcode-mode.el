@@ -39,9 +39,6 @@
 
 ;;; Code:
 
-(defconst bbcode-mode-version-number "2.0.1"
-  "BBCode Mode version number.")
-
 (defun bbcode-make-tag-regex (tag)
   "Make a regular expression that matches the given TAG name.
 
