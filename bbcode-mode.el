@@ -46,8 +46,7 @@
   "Make a regular expression that matches the given TAG name.
 
 The expression contains no capture groups."
-  (unless (stringp tag)
-    (error "Requires a string but called with %s" tag))
+  (assert (stringp tag))
   (format "\\(\\[%s\\]\\|\\[%s=\".+\"\\]\\)\\(.\\|\n\\)*?\\[/%s\\]"
           tag tag tag))
 
