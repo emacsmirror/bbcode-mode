@@ -84,7 +84,7 @@ The expression contains no capture groups."
           bbcode-tags)
   "Regular expressions to highlight BBCode markup.")
 
-(defun bbcode-insert-tag (prefix start end tag)
+(defun bbcode-insert-tag (prefix tag)
   "Insert a pair of TAG in the buffer at the current point.
 
 This function places the point in the middle of the tags.  The
@@ -92,12 +92,13 @@ tag will be wrapped around the points START and END if the user
 has selected a region.  If the function is called with the
 universal prefix argument then the point will be placed in the
 opening tag so the user can enter any attributes."
-  (interactive "PrMTag: ")
+  (interactive "PMTag: ")
   (let ((opening-tag (format "[%s%s]" tag (if prefix "=" "")))
         (closing-tag (format "[/%s]" tag))
-        (between-tags ""))
-    (when (and start end)
-      (assert (<= start end))
+        (between-tags "")
+        start end)
+    (when (use-region-p)
+      (setq start (region-beginning) end (region-end))
       (setq between-tags (buffer-substring start end))
       (goto-char start)
       (delete-region start end))
@@ -137,9 +138,7 @@ KEY must be a valid argument for the macro `kbd'."
      (defun ,function-name (prefix)
        ,(format "Insert the [%s] tag at point or around the current region" tag)
        (interactive "P")
-       (if (use-region-p)
-           (bbcode-insert-tag prefix (region-beginning) (region-end) ,tag)
-         (bbcode-insert-tag prefix nil nil ,tag)))
+       (bbcode-insert-tag prefix ,tag))
      (define-key bbcode-mode-map (kbd ,key) ',function-name))))
 
 ;; Keys that insert most tags are prefixed with 'C-c C-t'.
