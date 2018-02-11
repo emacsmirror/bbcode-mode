@@ -104,10 +104,12 @@ opening tag so the user can enter any attributes."
       (delete-region start end))
     (setq start (point))
     (insert (concat opening-tag between-tags closing-tag))
-    (goto-char (+ start
-                  (if prefix
-                      (1- (length opening-tag))
-                    (+ (length opening-tag) (length between-tags)))))))
+    (deactivate-mark)
+    (cond (prefix
+           (set-mark (goto-char (+ start (1- (length opening-tag))))))
+          (t
+           (set-mark (+ start (length opening-tag)))
+           (goto-char (+ start (length opening-tag) (length between-tags)))))))
 
 ;;;###autoload
 (define-derived-mode bbcode-mode text-mode "BBCode"
