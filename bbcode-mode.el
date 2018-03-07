@@ -5,8 +5,10 @@
 ;; Author: Eric James Michael Ritz <lobbyjones@gmail.com>
 ;; URL: https://github.com/ejmr/bbcode-mode
 ;; Version: 2.0.0
+;; Keywords: editorconfig util
+;; License: MIT
 ;;
-;;
+;; This file is not part of GNU Emacs.
 ;;
 ;;; License:
 ;;
@@ -24,8 +26,6 @@
 ;; along with this file; if not, write to the Free Software
 ;; Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 ;; 02110-1301, USA.
-;;
-;;
 ;;
 ;;; Commentary:
 ;;
@@ -48,31 +48,34 @@ The expression contains no capture groups."
           tag tag tag))
 
 (defconst bbcode-tags
-  '(("attachment" font-lock-variable-face)
-    ("b" bold)
-    ("*" font-lock-keyword-face)
-    ("center" font-lock-keyword-face)
-    ("code" font-lock-function-name-face)
-    ("color" font-lock-variable-name-face)
-    ("email" link)
-    ("font" font-lock-variable-name-face)
-    ("gvideo" font-lock-variable-name-face)
-    ("i" italic)
-    ("img" link)
-    ("li" font-lock-keyword-face)
-    ("list" font-lock-keyword-face)
-    ("ol" font-lock-keyword-face)
-    ("quote" font-lock-doc-face)
-    ("s" default)
-    ("size" font-lock-variable-name-face)
-    ("table" font-lock-keyword-face)
-    ("td" font-lock-variable-name-face)
-    ("th" bold)
-    ("tr" font-lock-keyword-face)
-    ("u" underline)
-    ("ul" font-lock-keyword-face)
-    ("url" link)
-    ("youtube" font-lock-variable-name-face)))
+  '(("*"           font-lock-keyword-face        "C-c C-l *")
+    ("attachment"  font-lock-variable-face       "C-c C-s a")
+    ("b"           bold                          "C-c C-t b")
+    ("center"      font-lock-keyword-face        "C-c C-t n")
+    ("code"        font-lock-function-name-face  "C-c C-t c")
+    ("color"       font-lock-variable-name-face  "C-c C-f c")
+    ("del"         default                       "C-c C-t d")
+    ("email"       link                          "C-c C-t e")
+    ("font"        font-lock-variable-name-face  "C-c C-f f")
+    ("gvideo"      font-lock-variable-name-face  "C-c C-s g")
+    ("i"           italic                        "C-c C-t i")
+    ("img"         link                          "C-c C-t m")
+    ("li"          font-lock-keyword-face        "C-c C-l i")
+    ("list"        font-lock-keyword-face        "C-c C-l l")
+    ("manual"      font-lock-variable-name-face  "C-c C-s m")
+    ("ol"          font-lock-keyword-face        "C-c C-l o")
+    ("quote"       font-lock-doc-face            "C-c C-t q")
+    ("s"           default                       "C-c C-t s")
+    ("size"        font-lock-variable-name-face  "C-c C-f s")
+    ("table"       font-lock-keyword-face        "C-c C-b t")
+    ("td"          font-lock-variable-name-face  "C-c C-b d")
+    ("th"          bold                          "C-c C-b h")
+    ("tr"          font-lock-keyword-face        "C-c C-b r")
+    ("u"           underline                     "C-c C-t u")
+    ("ul"          font-lock-keyword-face        "C-c C-l u")
+    ("url"         link                          "C-c C-t l")
+    ("wiki"        font-lock-variable-name-face  "C-c C-s w")
+    ("youtube"     font-lock-variable-name-face  "C-c C-s y")))
 
 (defconst bbcode-font-lock-keywords
   (mapcar (lambda (spec)
@@ -141,42 +144,13 @@ KEY must be a valid argument for the macro `kbd'."
      (define-key bbcode-mode-map (kbd ,key) ',function-name))))
 
 ;; Keys that insert most tags are prefixed with 'C-c C-t'.
-(bbcode-make-key-binding "C-c C-t b" "b")
-(bbcode-make-key-binding "C-c C-t c" "code")
-(bbcode-make-key-binding "C-c C-t d" "del")
-(bbcode-make-key-binding "C-c C-t e" "email")
-(bbcode-make-key-binding "C-c C-t i" "i")
-(bbcode-make-key-binding "C-c C-t l" "url")
-(bbcode-make-key-binding "C-c C-t m" "img")
-(bbcode-make-key-binding "C-c C-t n" "center")
-(bbcode-make-key-binding "C-c C-t q" "quote")
-(bbcode-make-key-binding "C-c C-t s" "s")
-(bbcode-make-key-binding "C-c C-t u" "u")
-
 ;; Keys related to modifying font properties begin with 'C-c C-f'.
-(bbcode-make-key-binding "C-c C-f c" "color")
-(bbcode-make-key-binding "C-c C-f f" "font")
-(bbcode-make-key-binding "C-c C-f s" "size")
-
 ;; Keys for creating lists begin with 'C-c C-l'.
-(bbcode-make-key-binding "C-c C-l i" "li")
-(bbcode-make-key-binding "C-c C-l l" "list")
-(bbcode-make-key-binding "C-c C-l o" "ol")
-(bbcode-make-key-binding "C-c C-l u" "ul")
-(bbcode-make-key-binding "C-c C-l *" "*")
-
 ;; Keys for tables begin with 'C-c C-b'
-(bbcode-make-key-binding "C-c C-b d" "td")
-(bbcode-make-key-binding "C-c C-b h" "th")
-(bbcode-make-key-binding "C-c C-b r" "tr")
-(bbcode-make-key-binding "C-c C-b t" "table")
-
 ;; Keys for special, uncommon tags begin with 'C-c C-s'.
-(bbcode-make-key-binding "C-c C-s a" "attachment")
-(bbcode-make-key-binding "C-c C-s g" "gvideo")
-(bbcode-make-key-binding "C-c C-s m" "manual")
-(bbcode-make-key-binding "C-c C-s w" "wiki")
-(bbcode-make-key-binding "C-c C-s y" "youtube")
+(dolist (spec bbcode-tags)
+  (let ((tag (nth 0 spec)) (key (nth 2 spec)))
+    (eval `(bbcode-make-key-binding ,key ,tag))))
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.bbcode$" . bbcode-mode))
