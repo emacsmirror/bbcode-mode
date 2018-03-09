@@ -2,19 +2,30 @@ BBCode Mode
 ===========
 
 This project adds support for writing [Bulletin Board Code][bbc] in
-[GNU Emacs][emacs].  We recommend installing from [MELPA][melpa].  To
-install manually, all you need to do is place the file in your
-`load-path` and then add `(require 'bbcode-mode)` to your Emacs
-configuration file.
-
-When sending bug reports please include the version number which can
-be found in `M-x list-packages` output or at the top of
-`bbcode-mode.el`. If you have cloned the official Git repository,
-please state the commit hash of the version you are using.
+[GNU Emacs][emacs].
 
 [There are other modes for BBCode][ew-bbcode] already out there, so if
 you do not find this mode to you liking then you may prefer the ones
 by Jason McBrayer and Xah Lee.
+
+
+How to install
+--------------
+
+We recommend installing from [MELPA][melpa].
+
+Otherwise, to install manually, all you need to do is place the file
+in your `load-path` and then add `(require 'bbcode-mode)` to your
+Emacs configuration file.
+
+
+How to report bugs
+------------------
+
+Please include the version number which can be found in `M-x
+list-packages` output or at the top of `bbcode-mode.el`. If you have
+cloned the official Git repository, please state the commit hash of
+the version you are using.
 
 
 Supported Tags
