@@ -102,7 +102,7 @@ Contributors
 License
 -------
 
-[GNU General Public License][gpl]
+[GNU General Public License][gpl] version 3 or later
 
 
 
