@@ -5,8 +5,8 @@
 ;; Author: Eric James Michael Ritz <lobbyjones@gmail.com>
 ;; URL: https://github.com/lassik/bbcode-mode
 ;; Version: 2.0.0
-;; Keywords: editorconfig util
-;; License: MIT
+;; Keywords: bbcode languages
+;; License: GPL
 ;;
 ;; This file is not part of GNU Emacs.
 ;;
