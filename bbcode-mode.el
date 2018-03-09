@@ -78,10 +78,23 @@ The expression contains no capture groups."
     ("youtube"     font-lock-variable-name-face  "C-c C-s y")))
 
 (defconst bbcode-font-lock-keywords
-  (mapcar (lambda (spec)
-            (let ((tag (nth 0 spec)) (face (nth 1 spec)))
-              (cons (bbcode-make-tag-regex tag) face)))
-          bbcode-tags)
+  `((,(concat (regexp-quote "[")
+              (regexp-opt (mapcar #'car bbcode-tags) t)
+              (regexp-quote "]"))
+     (0 font-lock-keyword-face))
+    (,(concat (regexp-quote "[")
+              (regexp-opt (mapcar #'car bbcode-tags) t)
+              (regexp-quote "=")
+              "\"?"
+              "\\(.*?\\\)"
+              "\"?"
+              (regexp-quote "]"))
+     (0 font-lock-keyword-face)
+     (2 font-lock-preprocessor-face t))
+    (,(concat (regexp-quote "[/")
+              (regexp-opt (mapcar #'car bbcode-tags) t)
+              (regexp-quote "]"))
+     (0 font-lock-keyword-face)))
   "Regular expressions to highlight BBCode markup.")
 
 (defun bbcode-insert-tag (prefix tag)
