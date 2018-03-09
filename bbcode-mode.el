@@ -6,6 +6,7 @@
 ;; Maintainer: Lassi Kortela <lassi@lassi.io>
 ;; URL: https://github.com/lassik/bbcode-mode
 ;; Version: 2.1.0
+;; Package-Requires: ()
 ;; Keywords: bbcode languages
 ;; License: GPL
 ;;
