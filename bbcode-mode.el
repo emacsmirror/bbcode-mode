@@ -3,6 +3,7 @@
 ;; Copyright 2012, 2013, 2014 Eric James Michael Ritz
 ;;
 ;; Author: Eric James Michael Ritz <lobbyjones@gmail.com>
+;; Maintainer: Lassi Kortela <lassi@lassi.io>
 ;; URL: https://github.com/lassik/bbcode-mode
 ;; Version: 2.1.0
 ;; Keywords: bbcode languages
