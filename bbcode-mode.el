@@ -3,7 +3,7 @@
 ;; Copyright 2012, 2013, 2014 Eric James Michael Ritz
 ;;
 ;; Author: Eric James Michael Ritz <lobbyjones@gmail.com>
-;; URL: https://github.com/ejmr/bbcode-mode
+;; URL: https://github.com/lassik/bbcode-mode
 ;; Version: 2.0.0
 ;; Keywords: editorconfig util
 ;; License: MIT
