@@ -97,6 +97,7 @@ Contributors
 
 * [Sebastian Wiesner](https://github.com/lunaryorn)
 * [L.C. Karssen](https://github.com/lckarssen)
+* [Lassi Kortela](https://github.com/lassik)
 
 
 License
