@@ -90,12 +90,14 @@
   "Regular expressions to highlight BBCode markup.")
 
 (defun bbcode-insert-tag (prefix tag)
-  "Insert BBCode [TAG][/TAG] pair at point.
+  "Insert BBCode tag pair at point.
 
 If the region is active then the tag is inserted around the
 region.  Point is placed between the tags so you can start typing
-text there.  With a prefix argument, point is placed inside the
-opening tag so you can enter attributes for the tag."
+text there.  With the PREFIX argument, point is placed inside the
+opening tag so you can enter attributes for the tag.
+
+TAG is the name of the tag to insert."
   (interactive "PMTag: ")
   (let ((opening-tag (format "[%s%s]" tag (if prefix "=" "")))
         (closing-tag (format "[/%s]" tag))
