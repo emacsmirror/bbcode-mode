@@ -39,14 +39,6 @@
 
 ;;; Code:
 
-(defun bbcode-make-tag-regex (tag)
-  "Make a regular expression that matches the given TAG name.
-
-The expression contains no capture groups."
-  (assert (stringp tag))
-  (format "\\(\\[%s\\]\\|\\[%s=\".+\"\\]\\)\\(.\\|\n\\)*?\\[/%s\\]"
-          tag tag tag))
-
 (defconst bbcode-tags
   '(("*"           font-lock-keyword-face        "C-c C-l *")
     ("attachment"  font-lock-variable-face       "C-c C-s a")
