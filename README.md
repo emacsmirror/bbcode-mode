@@ -22,6 +22,8 @@ Emacs configuration file.
 How to report bugs
 ------------------
 
+Please use GitHub issues.
+
 Please include the version number which can be found in `M-x
 list-packages` output or at the top of `bbcode-mode.el`. If you have
 cloned the official Git repository, please state the commit hash of
