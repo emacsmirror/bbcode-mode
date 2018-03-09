@@ -4,7 +4,7 @@
 ;;
 ;; Author: Eric James Michael Ritz <lobbyjones@gmail.com>
 ;; URL: https://github.com/lassik/bbcode-mode
-;; Version: 2.0.0
+;; Version: 2.1.0
 ;; Keywords: bbcode languages
 ;; License: GPL
 ;;
