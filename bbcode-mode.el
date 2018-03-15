@@ -149,12 +149,12 @@ TAG is the name of the tag to insert."
 
 KEY must be a valid argument for the macro `kbd'."
   (let ((function-name (intern (format "bbcode-insert-tag-%s" tag))))
-  `(progn
-     (defun ,function-name (prefix)
-       ,(format "Insert the [%s] tag at point or around the current region" tag)
-       (interactive "P")
-       (bbcode-insert-tag prefix ,tag))
-     (define-key bbcode-mode-map (kbd ,key) ',function-name))))
+    `(progn
+       (defun ,function-name (prefix)
+         ,(format "Insert the [%s] tag at point or around the current region" tag)
+         (interactive "P")
+         (bbcode-insert-tag prefix ,tag))
+       (define-key bbcode-mode-map (kbd ,key) ',function-name))))
 
 (dolist (spec bbcode-tags)
   (let ((tag (nth 0 spec)) (key (nth 2 spec)))
