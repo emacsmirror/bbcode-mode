@@ -4,9 +4,17 @@ BBCode Mode
 This project adds support for writing [Bulletin Board Code][bbc] in
 [GNU Emacs][emacs].
 
-[There are other modes for BBCode][ew-bbcode] already out there, so if
-you do not find this mode to you liking then you may prefer the ones
-by Jason McBrayer and Xah Lee.
+
+Other BBCode Modes
+------------------
+
+The [BBCode article on EmacsWiki][ew-bbcode] lists two other BBCode
+modes:
+
+* [xbbcode-mode.el][xbbcode-mode] by Xah Lee. He requires a payment of
+  $3 via PayPal to download it.
+* [bcode-mode.el][bcode-mode] by Jason McBrayer. Beginnings of a mode
+  like this one from 2008.
 
 
 How To Install
@@ -123,7 +131,9 @@ License
 
 
 [bbc]: http://bbcode.org/
+[bcode-mode]: https://bitbucket.org/jfm/emacs-bbcode/
 [emacs]: http://www.gnu.org/software/emacs/
 [gpl]: http://www.gnu.org/copyleft/gpl.html
 [melpa]: https://melpa.org/
 [ew-bbcode]: http://www.emacswiki.org/emacs/BbCode
+[xbbcode-mode]: http://xahlee.org/emacs/xbbcode-mode.html
