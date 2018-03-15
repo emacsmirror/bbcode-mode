@@ -9,22 +9,22 @@ you do not find this mode to you liking then you may prefer the ones
 by Jason McBrayer and Xah Lee.
 
 
-How to install
+How To Install
 --------------
 
 We recommend installing from [MELPA][melpa].
 
-Otherwise, to install manually, all you need to do is place the file
-in your `load-path` and then add `(require 'bbcode-mode)` to your
-Emacs configuration file.
+Otherwise, to install manually, all you need to do is place
+`bbcode-mode.el` in your `load-path` and then add `(require
+'bbcode-mode)` to your Emacs init file.
 
 
-How to report bugs
+How To Report Bugs
 ------------------
 
 Please use GitHub issues.
 
-Please include the version number which can be found in `M-x
+Please include the package version number. It can be found in `M-x
 list-packages` output or at the top of `bbcode-mode.el`. If you have
 cloned the official Git repository, please state the commit hash of
 the version you are using.
