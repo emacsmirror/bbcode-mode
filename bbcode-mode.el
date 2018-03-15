@@ -1,6 +1,7 @@
 ;;; bbcode-mode.el --- Major mode for writing BBCode markup
 ;;
 ;; Copyright 2012, 2013, 2014 Eric James Michael Ritz
+;; Copyright 2018 Lassi Kortela
 ;;
 ;; Author: Eric James Michael Ritz <lobbyjones@gmail.com>
 ;; Maintainer: Lassi Kortela <lassi@lassi.io>
