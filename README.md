@@ -30,7 +30,7 @@ Otherwise, to install manually, all you need to do is place
 How To Report Bugs
 ------------------
 
-Please use GitHub issues.
+GitHub issues are preferred. Email is also ok.
 
 Please include the package version number. It can be found in `M-x
 list-packages` output or at the top of `bbcode-mode.el`. If you have
