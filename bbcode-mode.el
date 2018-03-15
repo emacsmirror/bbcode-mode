@@ -41,6 +41,11 @@
 
 ;;; Code:
 
+;; Keys that insert most tags are prefixed with 'C-c C-t'.
+;; Keys related to modifying font properties begin with 'C-c C-f'.
+;; Keys for creating lists begin with 'C-c C-l'.
+;; Keys for tables begin with 'C-c C-b'
+;; Keys for special, uncommon tags begin with 'C-c C-s'.
 (defconst bbcode-tags
   '(("*"           font-lock-keyword-face        "C-c C-l *")
     ("attachment"  font-lock-variable-face       "C-c C-s a")
@@ -151,11 +156,6 @@ KEY must be a valid argument for the macro `kbd'."
        (bbcode-insert-tag prefix ,tag))
      (define-key bbcode-mode-map (kbd ,key) ',function-name))))
 
-;; Keys that insert most tags are prefixed with 'C-c C-t'.
-;; Keys related to modifying font properties begin with 'C-c C-f'.
-;; Keys for creating lists begin with 'C-c C-l'.
-;; Keys for tables begin with 'C-c C-b'
-;; Keys for special, uncommon tags begin with 'C-c C-s'.
 (dolist (spec bbcode-tags)
   (let ((tag (nth 0 spec)) (key (nth 2 spec)))
     (eval `(bbcode-make-key-binding ,key ,tag))))
