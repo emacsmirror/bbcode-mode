@@ -1,8 +1,8 @@
 BBCode Mode
 ===========
 
-This project adds support for writing [Bulletin Board Code][bbc] in
-[GNU Emacs][emacs].
+This major mode adds support for writing [Bulletin Board Code][bbc]
+(the markup language used on phpBB forums) in [GNU Emacs][emacs].
 
 
 Other BBCode Modes
@@ -23,8 +23,8 @@ How To Install
 We recommend installing from [MELPA][melpa].
 
 Otherwise, to install manually, all you need to do is place
-`bbcode-mode.el` in your `load-path` and then add `(require
-'bbcode-mode)` to your Emacs init file.
+`bbcode-mode.el` in your `load-path`, then add `(require
+'bbcode-mode)` to your Emacs init file and restart Emacs.
 
 
 How To Report Bugs
@@ -133,7 +133,7 @@ License
 [bbc]: http://bbcode.org/
 [bcode-mode]: https://bitbucket.org/jfm/emacs-bbcode/
 [emacs]: http://www.gnu.org/software/emacs/
+[ew-bbcode]: http://www.emacswiki.org/emacs/BbCode
 [gpl]: http://www.gnu.org/copyleft/gpl.html
 [melpa]: https://melpa.org/
-[ew-bbcode]: http://www.emacswiki.org/emacs/BbCode
 [xbbcode-mode]: http://xahlee.org/emacs/xbbcode-mode.html
