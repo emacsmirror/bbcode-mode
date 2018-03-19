@@ -114,19 +114,20 @@
                              (bbcode-quote-attribute-value value)))))
                attributes "")))
 
-(defun bbcode-insert-tag (prefix tag)
-  "Insert BBCode tag pair at point.
+(defun bbcode-insert-tag (tag body attributes)
+  "Insert the BBCode tag named TAG at point.
+
+BODY is 1 for a one-line tag, t for a multi-line tag, or nil to
+omit the closing tag entirely.
+
+ATTRIBUTES is either VALUE or a list of (NAME . VALUE) pairs.
 
 If the region is active then the tag is inserted around the
 region.  Point is placed between the tags so you can start typing
-text there.  With the PREFIX argument, point is placed inside the
-opening tag so you can enter attributes for the tag.
-
-TAG is the name of the tag to insert."
-  (interactive "PMTag: ")
-  (let ((opening-tag (format "[%s%s]" tag (if prefix "=" "")))
-        (closing-tag (format "[/%s]" tag))
-        (between-tags "")
+text there."
+  (let ((opening-tag (format "[%s%s]" tag (bbcode-quote-attributes attributes)))
+        (closing-tag (if body (format "[/%s]" tag) ""))
+        (between-tags (if (equal t body) "\n\n" ""))
         start end)
     (when (use-region-p)
       (setq start (region-beginning) end (region-end))
@@ -136,11 +137,8 @@ TAG is the name of the tag to insert."
     (setq start (point))
     (insert (concat opening-tag between-tags closing-tag))
     (deactivate-mark)
-    (cond (prefix
-           (set-mark (goto-char (+ start (1- (length opening-tag))))))
-          (t
-           (set-mark (+ start (length opening-tag)))
-           (goto-char (+ start (length opening-tag) (length between-tags)))))))
+    (set-mark (+ start (length opening-tag)))
+    (goto-char (+ (mark) (length between-tags) (if (equal t body) -1 0)))))
 
 ;;;###autoload
 (define-derived-mode bbcode-mode text-mode "BBCode"
@@ -162,21 +160,33 @@ TAG is the name of the tag to insert."
   (auto-fill-mode 0)
   (visual-line-mode 1))
 
-(defmacro bbcode-make-key-binding (key tag)
-  "Bind the sequence KEY to insert TAG into the buffer.
+(defmacro bbcode-define-insert-tag-commands ()
+  `(progn
+     ,@(cl-mapcan
+        (lambda (tag-spec)
+          (destructuring-bind (tag face key body . attrs) tag-spec
+            (let ((function-name (intern (format "bbcode-insert-tag-%s" tag)))
+                  (insert-tag (format "MInsert BBCode tag: [%s" tag)))
+              `((defun ,function-name ,attrs
+                  ,(format "Insert the [%s] tag at point or around the region."
+                           tag)
+                  (interactive
+                   ,(if (= 1 (length attrs))
+                        (concat insert-tag "=")
+                      (mapconcat (lambda (attr)
+                                   (format "%s %s=" insert-tag attr))
+                                 attrs "\n")))
+                  (bbcode-insert-tag
+                   ,tag ,body
+                   ,(if (= 1 (length attrs))
+                        (car attrs)
+                      `(list ,@(mapcar (lambda (attr)
+                                         `(cons ,(format "%s" attr) ,attr))
+                                       attrs)))))
+                (define-key bbcode-mode-map (kbd ',key) ',function-name)))))
+        bbcode-tags)))
 
-KEY must be a valid argument for the macro `kbd'."
-  (let ((function-name (intern (format "bbcode-insert-tag-%s" tag))))
-    `(progn
-       (defun ,function-name (prefix)
-         ,(format "Insert the [%s] tag at point or around the current region" tag)
-         (interactive "P")
-         (bbcode-insert-tag prefix ,tag))
-       (define-key bbcode-mode-map (kbd ,key) ',function-name))))
-
-(dolist (spec bbcode-tags)
-  (let ((tag (nth 0 spec)) (key (nth 2 spec)))
-    (eval `(bbcode-make-key-binding ,key ,tag))))
+(bbcode-define-insert-tag-commands)
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.bbcode$" . bbcode-mode))
