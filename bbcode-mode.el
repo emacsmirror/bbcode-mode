@@ -67,6 +67,7 @@
     ("quote"       font-lock-doc-face            "C-c C-t q" t name)
     ("s"           default                       "C-c C-t s" 1)
     ("size"        font-lock-variable-name-face  "C-c C-f s" 1 size)
+    ("style"       default                       "C-C C-f y" 1 color size)
     ("table"       font-lock-keyword-face        "C-c C-b t" t)
     ("td"          font-lock-variable-name-face  "C-c C-b d" 1)
     ("th"          bold                          "C-c C-b h" 1)
