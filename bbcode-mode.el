@@ -99,12 +99,18 @@
   "Regular expressions to highlight BBCode markup.")
 
 (defun bbcode-quote-attribute-value (value)
+  "Put quotes around BBCode tag attribute VALUE if needed."
   (save-match-data
     (if (string-match "[^A-Za-z0-9]" value)
         (concat "\"" value "\"")
       value)))
 
 (defun bbcode-quote-attributes (attributes)
+  "Quote one or more BBCode tag ATTRIBUTES to put inside [tag].
+
+If ATTRIBUTES is a string, it denotes a single attribute VALUE.
+Otherwise ATTRIBUTES must be a list of (NAME . VALUE) pairs.
+Attributes with blank values are pruned."
   (if (stringp attributes)
       (if (equal "" attributes) ""
         (format "=%s" (bbcode-quote-attribute-value attributes)))
@@ -162,6 +168,7 @@ text there."
   (visual-line-mode 1))
 
 (defmacro bbcode-define-insert-tag-commands ()
+  "Define insert-tag-* commands and key bindings for `bbcode-mode'."
   `(progn
      ,@(cl-mapcan
         (lambda (tag-spec)
