@@ -7,7 +7,7 @@
 ;; Maintainer: Lassi Kortela <lassi@lassi.io>
 ;; URL: https://github.com/lassik/bbcode-mode
 ;; Version: 2.1.0
-;; Package-Requires: ()
+;; Package-Requires: ((cl-lib "0.5"))
 ;; Keywords: bbcode languages
 ;; License: GPL
 ;;
@@ -41,6 +41,8 @@
 ;; bbcode-mode.  No other extensions are associated with the mode.
 
 ;;; Code:
+
+(eval-when-compile (require 'cl-lib))
 
 ;; Keys that insert most tags are prefixed with 'C-c C-t'.
 ;; Keys related to modifying font properties begin with 'C-c C-f'.
@@ -115,7 +117,7 @@ Attributes with blank values are pruned."
       (if (equal "" attributes) ""
         (format "=%s" (bbcode-quote-attribute-value attributes)))
     (mapconcat (lambda (attr)
-                 (destructuring-bind (name . value) attr
+                 (cl-destructuring-bind (name . value) attr
                    (if (equal "" value) ""
                      (format " %s=%s" name
                              (bbcode-quote-attribute-value value)))))
@@ -172,7 +174,7 @@ text there."
   `(progn
      ,@(cl-mapcan
         (lambda (tag-spec)
-          (destructuring-bind (tag face key body . attrs) tag-spec
+          (cl-destructuring-bind (tag face key body . attrs) tag-spec
             (let ((function-name (intern (format "bbcode-insert-tag-%s" tag)))
                   (insert-tag (format "MInsert BBCode tag: [%s" tag)))
               `((defun ,function-name ,attrs
