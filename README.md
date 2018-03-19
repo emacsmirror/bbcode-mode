@@ -1,8 +1,9 @@
 BBCode Mode
 ===========
 
-This major mode adds support for writing [Bulletin Board Code][bbc]
-(the markup language used on phpBB forums) in [GNU Emacs][emacs].
+This major mode adds support for [BBCode][bbc] (aka Bulletin Board
+Code, the markup language used to write posts on phpBB forums) in [GNU
+Emacs][emacs].
 
 
 Other BBCode Modes
@@ -106,7 +107,7 @@ Key-bindings for table tags begin with `C-c C-b`.
 These are tags which are uncommon in BBCode and may even be unique to
 specific websites.  These key-bindings all begin with `C-c C-s`.
 
-Mnemonic: <strong>S</strong>ecial
+Mnemonic: <strong>S</strong>pecial
 
 * `[attachment]`: `C-c C-s a`
 * `[gvideo]`: `C-c C-s g`
@@ -118,6 +119,7 @@ Mnemonic: <strong>S</strong>ecial
 Contributors
 ------------
 
+* [Eric James Michael Ritz](https://github.com/ejmr/) &mdash; author
 * [Sebastian Wiesner](https://github.com/lunaryorn)
 * [L.C. Karssen](https://github.com/lckarssen)
 * [Lassi Kortela](https://github.com/lassik)
@@ -135,5 +137,5 @@ License
 [emacs]: http://www.gnu.org/software/emacs/
 [ew-bbcode]: http://www.emacswiki.org/emacs/BbCode
 [gpl]: http://www.gnu.org/copyleft/gpl.html
-[melpa]: https://melpa.org/
+[melpa]: https://melpa.org/#/?q=bbcode-mode
 [xbbcode-mode]: http://xahlee.org/emacs/xbbcode-mode.html
