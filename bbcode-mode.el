@@ -52,7 +52,7 @@
 (eval-and-compile
   (defconst bbcode-tags
     '(("*"           font-lock-keyword-face        "C-c C-l *" nil)
-      ("attachment"  font-lock-variable-face       "C-c C-s a" 1)
+      ("attachment"  font-lock-variable-name-face  "C-c C-s a" 1)
       ("b"           bold                          "C-c C-t b" 1)
       ("center"      font-lock-keyword-face        "C-c C-t n" 1)
       ("code"        font-lock-function-name-face  "C-c C-t c" t)
