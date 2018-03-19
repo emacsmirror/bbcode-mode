@@ -97,6 +97,23 @@
      (0 font-lock-keyword-face)))
   "Regular expressions to highlight BBCode markup.")
 
+(defun bbcode-quote-attribute-value (value)
+  (save-match-data
+    (if (string-match "[^A-Za-z0-9]" value)
+        (concat "\"" value "\"")
+      value)))
+
+(defun bbcode-quote-attributes (attributes)
+  (if (stringp attributes)
+      (if (equal "" attributes) ""
+        (format "=%s" (bbcode-quote-attribute-value attributes)))
+    (mapconcat (lambda (attr)
+                 (destructuring-bind (name . value) attr
+                   (if (equal "" value) ""
+                     (format " %s=%s" name
+                             (bbcode-quote-attribute-value value)))))
+               attributes "")))
+
 (defun bbcode-insert-tag (prefix tag)
   "Insert BBCode tag pair at point.
 
