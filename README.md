@@ -78,6 +78,7 @@ Mnemonic: <strong>F</strong>ont
 * `[color]`: `C-c C-f c`
 * `[font]`: `C-c C-f f`
 * `[size]`: `C-c C-f s`
+* `[style]`: `C-C C-f y`
 
 ### List Tags ###
 
