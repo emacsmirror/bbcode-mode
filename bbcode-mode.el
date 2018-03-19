@@ -73,7 +73,7 @@
     ("th"          bold                          "C-c C-b h" 1)
     ("tr"          font-lock-keyword-face        "C-c C-b r" 1)
     ("u"           underline                     "C-c C-t u" 1)
-    ("ul"          font-lock-keyword-face        "C-c C-l u" 1)
+    ("ul"          font-lock-keyword-face        "C-c C-l u" t)
     ("url"         link                          "C-c C-t l" 1 url)
     ("wiki"        font-lock-variable-name-face  "C-c C-s w" 1)
     ("youtube"     font-lock-variable-name-face  "C-c C-s y" 1)))
