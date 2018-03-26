@@ -139,19 +139,19 @@ text there."
   (let ((opening-tag (format "[%s%s]" tag (bbcode-quote-attributes attributes)))
         (closing-tag (if body (format "[/%s]" tag) ""))
         (between-tags (if (equal t body) "\n\n" ""))
-        (body-offset (if (equal t body) -1 0))
+        (body-offset (if (equal t body) 1 0))
         start end)
     (when (use-region-p)
       (setq start (region-beginning) end (region-end)
             between-tags (buffer-substring start end)
-            body-offset 0)
+            body-offset (length between-tags))
       (goto-char start)
       (delete-region start end))
     (setq start (point))
     (insert (concat opening-tag between-tags closing-tag))
     (deactivate-mark)
     (set-mark (+ start (length opening-tag)))
-    (goto-char (+ (mark) (length between-tags) body-offset))))
+    (goto-char (+ (mark) body-offset))))
 
 ;;;###autoload
 (define-derived-mode bbcode-mode text-mode "BBCode"
