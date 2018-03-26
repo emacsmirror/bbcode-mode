@@ -182,8 +182,8 @@ text there."
             (let ((function-name (intern (format "bbcode-insert-tag-%s" tag)))
                   (insert-tag (format "MInsert BBCode tag: [%s" tag)))
               `((defun ,function-name ,attrs
-                  ,(format "Insert the [%s] tag at point or around the region."
-                           tag)
+                  ,(format "Insert the [%s] tag at point or %s the region."
+                           tag (if body "around" "before"))
                   (interactive
                    ,(if (= 1 (length attrs))
                         (concat insert-tag "=")
