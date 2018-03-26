@@ -87,19 +87,19 @@
       (,(concat (regexp-quote "[")
                 (regexp-opt (mapcar #'car bbcode-tags) t)
                 "]")
-       (0 font-lock-keyword-face))
+       (0 'font-lock-keyword-face))
       ;; Opening tag with attribute.
       (,(concat (regexp-quote "[")
                 (regexp-opt (mapcar #'car bbcode-tags) t)
                 "[ =]\\(.*?\\)"
                 "]")
-       (0 font-lock-keyword-face)
-       (2 font-lock-preprocessor-face t))
+       (0 'font-lock-keyword-face)
+       (2 'font-lock-preprocessor-face t))
       ;; Closing tag.
       (,(concat (regexp-quote "[/")
                 (regexp-opt (mapcar #'car bbcode-tags) t)
                 "]")
-       (0 font-lock-keyword-face)))
+       (0 'font-lock-keyword-face)))
     "Regular expressions to highlight BBCode markup."))
 
 (defun bbcode-quote-attribute-value (value)
