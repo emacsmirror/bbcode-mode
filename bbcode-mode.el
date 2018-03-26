@@ -202,6 +202,13 @@ text there."
 
 (bbcode-define-insert-tag-commands)
 
+(defun bbcode-scratch ()
+  "Open *bbcode-scratch* buffer to quickly edit BBCode posts."
+  (interactive)
+  (switch-to-buffer (get-buffer-create "*bbcode-scratch*"))
+  (unless (equal 'bbcode-mode major-mode)
+    (bbcode-mode)))
+
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.bbcode$" . bbcode-mode))
 
