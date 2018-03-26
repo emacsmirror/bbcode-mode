@@ -99,7 +99,23 @@
       (,(concat (regexp-quote "[/")
                 (regexp-opt (mapcar #'car bbcode-tags) t)
                 "]")
-       (0 'font-lock-keyword-face)))
+       (0 'font-lock-keyword-face))
+      ;; Highlight the body of some tags with a tag-specific face
+      ,@(let (patterns (face->tags (make-hash-table)))
+          (dolist (tag-spec bbcode-tags)
+            (let* ((tag (nth 0 tag-spec)) (face (nth 1 tag-spec)))
+              (puthash face (cons tag (gethash face face->tags)) face->tags)))
+          (maphash (lambda (face tags)
+                     (when face
+                       (push `(,(concat (regexp-quote "[")
+                                        (regexp-opt tags t)
+                                        "]"
+                                        "\\([^][]+\\)"
+                                        (regexp-quote "["))
+                               (2 ',face t))
+                             patterns)))
+                   face->tags)
+          patterns))
     "Regular expressions to highlight BBCode markup."))
 
 (defun bbcode-quote-attribute-value (value)
