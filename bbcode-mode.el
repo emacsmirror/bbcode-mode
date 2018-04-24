@@ -218,6 +218,7 @@ text there."
 
 (bbcode-define-insert-tag-commands)
 
+;;;###autoload
 (defun bbcode-scratch ()
   "Open *bbcode-scratch* buffer to quickly edit BBCode posts."
   (interactive)
