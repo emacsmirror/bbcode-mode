@@ -1,10 +1,14 @@
 BBCode Mode
 ===========
 
-This major mode adds support for [BBCode][bbc] (aka Bulletin Board
-Code, the markup language used to write posts on phpBB forums) in [GNU
-Emacs][emacs].
+This major mode lets you write [phpBB][phpbb] forum posts in
+[Emacs][emacs]. It implements syntax highlighting and keyboard
+commands for [BBCode][bbc] (Bulletin Board Code), the markup language
+used by phpBB.
 
+Do `M-x bbcode-scratch` to instantly get a temp buffer to write
+posts. Use `M-x bbcode-mode` to switch an existing buffer to BBCode
+mode. The file name extension `.bbcode` is also recognized.
 
 Other BBCode Modes
 ------------------
@@ -133,6 +137,7 @@ License
 
 
 
+[phpbb]: https://www.phpbb.com/
 [bbc]: http://bbcode.org/
 [bcode-mode]: https://bitbucket.org/jfm/emacs-bbcode/
 [emacs]: http://www.gnu.org/software/emacs/
