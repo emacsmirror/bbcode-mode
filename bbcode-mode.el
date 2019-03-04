@@ -6,7 +6,7 @@
 ;; Author: Eric James Michael Ritz <lobbyjones@gmail.com>
 ;; Maintainer: Lassi Kortela <lassi@lassi.io>
 ;; URL: https://github.com/lassik/emacs-bbcode-mode
-;; Version: 2.1.0
+;; Version: 2.3.0
 ;; Package-Requires: ((emacs "24") (cl-lib "0.5"))
 ;; Keywords: bbcode languages
 ;;
