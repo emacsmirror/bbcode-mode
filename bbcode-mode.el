@@ -2,14 +2,13 @@
 ;;
 ;; Copyright 2012, 2013, 2014 Eric James Michael Ritz
 ;; Copyright 2018 Lassi Kortela
-;;
+;; SPDX-License-Identifier: GPL-3.0-or-later
 ;; Author: Eric James Michael Ritz <lobbyjones@gmail.com>
 ;; Maintainer: Lassi Kortela <lassi@lassi.io>
 ;; URL: https://github.com/lassik/emacs-bbcode-mode
 ;; Version: 2.1.0
-;; Package-Requires: ((cl-lib "0.5"))
+;; Package-Requires: ((emacs "24") (cl-lib "0.5"))
 ;; Keywords: bbcode languages
-;; License: GPL
 ;;
 ;; This file is not part of GNU Emacs.
 ;;
